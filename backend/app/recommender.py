@@ -3,6 +3,8 @@ from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+from .tmdb import get_movie_poster
+
 DATA_DIR = Path(__file__).parent.parent / "data"
 
 movies = pd.read_csv(DATA_DIR / "movies.csv")
@@ -52,10 +54,12 @@ def recommend(movie_name, top_n=10):
 
     for i in scores[1:top_n + 1]:
 
+        title = movies.iloc[i[0]]["title"]
+
         recommendations.append({
-            "title": movies.iloc[i[0]]["title"],
-            "genres": movies.iloc[i[0]]["genres"]
-            "poster": get_movie_poster(row["title"])
+            "title": title,
+            "genres": movies.iloc[i[0]]["genres"],
+            "poster": get_movie_poster(title)
         })
 
     return recommendations
