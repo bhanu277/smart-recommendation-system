@@ -15,7 +15,7 @@ function App() {
       setError("");
 
       const res = await axios.get(
-        `http://127.0.0.1:8000/recommend/${movie}`
+        `https://smart-recommendation-system-m6va.onrender.com/recommend/${movie}`
       );
 
       setResults(res.data);
@@ -33,7 +33,7 @@ function App() {
       setError("");
 
       const res = await axios.get(
-        `http://127.0.0.1:8000/hybrid/${userId}/${movie}`
+        `https://smart-recommendation-system-m6va.onrender.com/hybrid/${userId}/${movie}`
       );
 
       setResults(res.data);
