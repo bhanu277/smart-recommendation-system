@@ -1,10 +1,7 @@
 import pandas as pd
 from pathlib import Path
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-from .tmdb import get_movie_poster
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 
@@ -12,17 +9,10 @@ movies = pd.read_csv(DATA_DIR / "movies.csv")
 
 movies["genres"] = movies["genres"].fillna("")
 
-vectorizer = TfidfVectorizer(
-    stop_words="english"
-)
+vectorizer = TfidfVectorizer(stop_words="english")
 
 tfidf_matrix = vectorizer.fit_transform(
     movies["genres"]
-)
-
-similarity = cosine_similarity(
-    tfidf_matrix,
-    tfidf_matrix
 )
 
 
@@ -43,9 +33,14 @@ def recommend(movie_name, top_n=10):
 
     idx = matches.index[0]
 
-    scores = list(
-        enumerate(similarity[idx])
-    )
+    movie_vector = tfidf_matrix[idx]
+
+    scores = cosine_similarity(
+        movie_vector,
+        tfidf_matrix
+    ).flatten()
+
+    scores = list(enumerate(scores))
 
     scores = sorted(
         scores,
@@ -57,12 +52,9 @@ def recommend(movie_name, top_n=10):
 
     for i in scores[1:top_n + 1]:
 
-        title = movies.iloc[i[0]]["title"]
-
         recommendations.append({
-            "title": title,
-            "genres": movies.iloc[i[0]]["genres"],
-            "poster": get_movie_poster(title)
+            "title": movies.iloc[i[0]]["title"],
+            "genres": movies.iloc[i[0]]["genres"]
         })
 
     return recommendations
