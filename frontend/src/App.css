@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    135deg,
+    #020617,
+    #0f172a,
+    #000000
+  );
+
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  max-width: 1400px;
+  margin: auto;
+  padding: 30px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #cbd5e1;
+}
+
+.search-box {
+  background: rgba(255,255,255,0.06);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  margin-bottom: 40px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.input-group input {
+  width: 100%;
+
+  padding: 14px;
+
+  border-radius: 10px;
+
+  border: none;
+
+  font-size: 16px;
+}
+
+.button-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 14px 24px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.recommend-btn {
+  background: #4f46e5;
+  color: white;
+}
+
+.hybrid-btn {
+  background: #ec4899;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.error {
+  text-align: center;
+  color: #ef4444;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin-bottom: 25px;
+  color: white;
+}
+
+.cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(280px, 1fr));
+
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.poster {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 15px;
+  color: white;
+}
+
+.genres {
+  padding: 0 15px 15px;
+  color: #cbd5e1;
+}
+
+.score {
+  padding: 0 15px 20px;
+  color: gold;
+  font-size: 18px;
+}
