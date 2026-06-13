@@ -55,6 +55,7 @@ def recommend(movie_name, top_n=10):
         recommendations.append({
             "title": movies.iloc[i[0]]["title"],
             "genres": movies.iloc[i[0]]["genres"]
+            "poster": get_movie_poster(row["title"])
         })
 
     return recommendations
